@@ -44,22 +44,22 @@
                         <a class="nav-link disabled" href="#contactus">Contact</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
-                    </li>
-                </ul>
-                {% if user is defined %}
+
+                {% if app.user is not null %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                     </li>
-                {% endif %}
-
+                    {% else %}
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ path('app_login') }}">Se connecter</a>
+                            </li>
+                        </ul>
+                </ul>
             </div>
+            {% endif %}
+
         </nav>
     </header>
     <main role="main">
@@ -227,7 +227,7 @@
                         </form>
 
                         <div class="text-center text-md-left">
-                            <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                            <a class="btn btn-primary" style="background-color: #2e3136 !important;" onclick="document.getElementById('contact-form').submit();">Send</a>
                         </div>
                         <div class="status"></div>
                     </div>
